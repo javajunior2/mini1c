@@ -3,13 +3,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Company{
 
-    List<Employee> comp = new ArrayList<Employee>();
+    List<Employee> employeesList = new ArrayList<Employee>();
 
     public void addEmployee(Employee e1) {
-        comp.add(e1);
+        employeesList.add(e1);
     }
 
     public void removeEmployee() {
@@ -33,15 +34,15 @@ public class Company{
         if (ir == 0) {
             System.out.print("Wrong ID.");
         } else {
-            comp.remove(ir - 1);
+            employeesList.remove(ir - 1);
         }
     }
 
     public void listCompany() {
         System.out.println("+------------------------");
-        for (int k = 0; k < comp.size(); k++) {
+        for (int k = 0; k < employeesList.size(); k++) {
             System.out.format("%3s  ", k + 1);
-            System.out.println(comp.get(k));
+            System.out.println(employeesList.get(k));
 	}
         System.out.println("+------------------------");
     }
