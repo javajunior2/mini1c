@@ -2,44 +2,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Company{
 
-    ArrayList<Employee> comp = new ArrayList<Employee>();
-
-    public void addEmployee() {
-
-        String n = null;
-        String s = null;
-        String j = null;
-
-        System.out.print("Input name.");
-        BufferedReader brn = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            n = brn.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.print("Input surname.");
-        BufferedReader brs = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            s = brs.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.print("Input job position.");
-        BufferedReader brj = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            j = brj.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Employee tmpEmployee = new Employee(n, s, j);
-        comp.add(tmpEmployee);
-    }
+    List<Employee> comp = new ArrayList<Employee>();
 
     public void addEmployee(Employee e1) {
         comp.add(e1);

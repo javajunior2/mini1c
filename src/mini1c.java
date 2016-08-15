@@ -7,12 +7,8 @@ public class mini1c {
 
     public static void main(String[] args) {
 
-        Company com = new Company();
-        int i = 3;
-        com.addEmployee(new Employee("Sasha", "Beliy", "admin"));
-        com.addEmployee(new Employee("Aaron", "Zender", "tester"));
-        com.addEmployee(new Employee("Mike", "Amstel", "developer"));
-
+        Manager man = new Manager();
+        
         System.out.println("------------------------------");
         System.out.println("0 - Exit");
         System.out.println("1 - Add employee");
@@ -23,6 +19,7 @@ public class mini1c {
         System.out.println("Enter command number:");
         System.out.println("------------------------------");
 
+        int i = 3;
         while (i != 0) {
             String s = null;
 
@@ -37,25 +34,25 @@ public class mini1c {
 
             switch (i) {
             case 0: System.out.println("Exiting.");
-                            break;
-            case 1: System.out.println("Add employee.");
-                    com.addEmployee();
-                    com.listCompany();
                     break;
-            case 2:	System.out.println("Remove employee: input ID.");
-                    com.removeEmployee();
-                    com.listCompany();
+            case 1: System.out.println("Add employee.");
+                    man.addEmployee(man.createEmployee());
+                    man.listCompany();
+                    break;
+            case 2: System.out.println("Remove employee: input ID.");
+                    man.removeEmployee();
+                    man.listCompany();
                     break;
             case 3: System.out.println("List all employees.");
-                    com.listCompany();
+                    man.listCompany();
                     break;
             case 4: System.out.println("List all employees sorted by name.");
-                    Collections.sort(com.comp, Employee.ByNameComparator);
-                    com.listCompany();
+                    Collections.sort(man.company.comp, Employee.ByNameComparator);
+                    man.listCompany();
                     break;
             case 5: System.out.println("List all employees sorted by surname.");
-                    Collections.sort(com.comp, Employee.BySurnameComparator);
-                    com.listCompany();
+                    Collections.sort(man.company.comp, Employee.BySurnameComparator);
+                    man.listCompany();
                     break;
             default: System.out.println("Only 0, 1, 2, 3, 4, 5 buttons work.");
             }
