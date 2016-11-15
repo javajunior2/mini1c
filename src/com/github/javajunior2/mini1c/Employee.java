@@ -1,3 +1,5 @@
+package com.github.javajunior2.mini1c;
+
 import java.util.Comparator;
 
 public class Employee {
@@ -44,18 +46,31 @@ public class Employee {
 
     /*Comparator for sorting the list by Employee Name*/
     public static Comparator<Employee> ByNameComparator = new Comparator<Employee>() {
+        @Override
         public int compare(Employee s1, Employee s2) {
             String employeeName1 = s1.getName().toUpperCase();
             String employeeName2 = s2.getName().toUpperCase();
             return employeeName1.compareTo(employeeName2);//ascending order
-    }
+        }
     };
 
+    /*Comparator for sorting the list by Employee Surname*/
     public static Comparator<Employee> BySurnameComparator = new Comparator<Employee>() {
+        @Override
         public int compare(Employee s1, Employee s2) {
             String employeeName1 = s1.getSurname().toUpperCase();
             String employeeName2 = s2.getSurname().toUpperCase();
             return employeeName1.compareTo(employeeName2);//ascending order
+        }
+    };
+    
+    /*Comparator for sorting the list by Employee jobPosition (default sort)*/
+    public static Comparator<Employee> ByJobPositionComparator = new Comparator<Employee>() {
+        @Override
+        public int compare(Employee s1, Employee s2) {
+            String employeeJobPosition1 = s1.getJobPosition().toUpperCase();
+            String employeeJobPosition2 = s2.getJobPosition().toUpperCase();
+            return employeeJobPosition1.compareTo(employeeJobPosition2);//ascending order
         }
     };
 }

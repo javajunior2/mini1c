@@ -1,18 +1,17 @@
+package com.github.javajunior2.mini1c;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Manager {
-
-    Employee employee;
+public class Model {
+    
     Company company;
     
-    Manager() {
+    Model() {
         company = new Company();
-        company.addEmployee(new Employee("Sasha", "Beliy", "admin"));
-        company.addEmployee(new Employee("Aaron", "Zender", "tester"));
-        company.addEmployee(new Employee("Mike", "Amstel", "developer"));
     }
+
     
     public Employee createEmployee() {
         String n = null;

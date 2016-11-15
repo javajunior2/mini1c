@@ -1,3 +1,5 @@
+package com.github.javajunior2.mini1c;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,22 +8,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-public class mini1c {
+public class Controller {
 
-    public static void main(String[] args) {
-
-        Manager manager = new Manager();
+    Model model;
+    View view;
+    
+    public Controller() {
+        this.model = new Model();
+        model.listCompany();
+        this.view = new View();
+        view.drawMenu();
+    }
+    
+    public void readInput() {
         
-        System.out.println("------------------------------");
-        System.out.println("0 - Exit");
-        System.out.println("1 - Add employee");
-        System.out.println("2 - Remove employee");
-        System.out.println("3 - List employees");
-        System.out.println("4 - List employees (sort by name)");
-        System.out.println("5 - List employees (sort by surname)");
-        System.out.println("Enter command number:");
-        System.out.println("------------------------------");
-
         int i = 3;
         while (i != 0) {
             String s = null;
@@ -43,23 +43,29 @@ public class mini1c {
                 case 0: System.out.println("Exiting.");
                         break;
                 case 1: System.out.println("Add employee.");
-                        manager.addEmployee(manager.createEmployee());
-                        manager.listCompany();
+                        model.addEmployee(model.createEmployee());
+                        model.listCompany();
+                        view.drawMenu();
                         break;
                 case 2: System.out.println("Remove employee: input ID.");
-                        manager.removeEmployee();
-                        manager.listCompany();
+                        model.removeEmployee();
+                        model.listCompany();
+                        view.drawMenu();
                         break;
                 case 3: System.out.println("List all employees.");
-                        manager.listCompany();
+                        Collections.sort(model.company.employeesList, Employee.ByNameComparator);
+                        model.listCompany();
+                        view.drawMenu();
                         break;
-                case 4: System.out.println("List all employees sorted by name.");
-                        Collections.sort(manager.company.employeesList, Employee.ByNameComparator);
-                        manager.listCompany();
+                case 4: System.out.println("List all employees sorted by surname.");
+                        Collections.sort(model.company.employeesList, Employee.BySurnameComparator);
+                        model.listCompany();
+                        view.drawMenu();
                         break;
-                case 5: System.out.println("List all employees sorted by surname.");
-                        Collections.sort(manager.company.employeesList, Employee.BySurnameComparator);
-                        manager.listCompany();
+                case 5: System.out.println("List all employees sorted by job position.");
+                        Collections.sort(model.company.employeesList, Employee.ByJobPositionComparator);
+                        model.listCompany();
+                        view.drawMenu();
                         break;
                 default: System.out.println("Only 0, 1, 2, 3, 4, 5 buttons work.");
                 }
@@ -68,5 +74,7 @@ public class mini1c {
             }
                 
         }
+        
     }
+    
 }
